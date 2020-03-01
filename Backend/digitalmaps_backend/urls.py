@@ -21,6 +21,7 @@ from digitalmaps_backend import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.Filament_REST.as_view(), name='landing_page'),
+    path('', views.LandingPage.as_view(), name='landing_page'),
+    path('locais/', include('locais.urls')),
     url(r'^api-auth/', include('rest_framework.urls'))
 ]
