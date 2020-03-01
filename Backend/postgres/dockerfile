@@ -1,0 +1,7 @@
+# Esta dockerfile utiliza como base a imagem "postgres" em sua ultima versão disponível baixável pelo dockerHub.
+# Caso a imagem não esteja baixada no pc a ser executado, ela é baixada automaticamente na hora de fazer o docker build.01
+# O arquivo a ser copiado para a nova imagem dá as diretrizes para criação de uma base por padrão, devem ser fornecidas envs na hora da execução do container.
+
+FROM postgres:latest
+
+COPY ./init/01-db_setup.sh /docker-entrypoint-initdb.d/
