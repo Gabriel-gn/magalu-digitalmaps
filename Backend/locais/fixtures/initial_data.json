@@ -9,5 +9,80 @@
       "is_staff": true,
       "is_active": true
     }
+  },
+  {
+    "model": "locais.localizacao",
+    "pk": 1,
+    "fields": {
+      "unique_id": "LskXuosG2QodKUUaCSUave",
+      "created": "2020-03-02T01:58:37.734Z",
+      "modified": "2020-03-02T02:00:45.194Z",
+      "user": 1,
+      "nome": "Posto de Gasolina",
+      "pos_x": 10,
+      "pos_y": 10,
+      "hor_abertura": "06:00:00",
+      "hor_fechamento": "23:00:00"
+    }
+  },
+  {
+    "model": "locais.localizacao",
+    "pk": 2,
+    "fields": {
+      "unique_id": "v2s8kefpx6HcWYgF9X5sfj",
+      "created": "2020-03-02T02:00:36.608Z",
+      "modified": "2020-03-02T02:00:36.608Z",
+      "user": 1,
+      "nome": "Igreja Matriz",
+      "pos_x": 50,
+      "pos_y": 50,
+      "hor_abertura": "10:00:00",
+      "hor_fechamento": "18:00:00"
+    }
+  },
+  {
+    "model": "locais.localizacao",
+    "pk": 3,
+    "fields": {
+      "unique_id": "kkYTk9efT78PHbYjupqpH2",
+      "created": "2020-03-02T02:02:42.362Z",
+      "modified": "2020-03-02T02:02:42.362Z",
+      "user": 1,
+      "nome": "Sede da DigitalMaps",
+      "pos_x": 80,
+      "pos_y": 90,
+      "hor_abertura": "07:00:00",
+      "hor_fechamento": "19:00:00"
+    }
+  },
+  {
+    "model": "locais.localizacao",
+    "pk": 4,
+    "fields": {
+      "unique_id": "YN7J32rRSWsLbZ2JJyqkq6",
+      "created": "2020-03-02T02:04:42.377Z",
+      "modified": "2020-03-02T02:04:42.377Z",
+      "user": 1,
+      "nome": "Rel\u00f3gio do Sol",
+      "pos_x": 10,
+      "pos_y": 5,
+      "hor_abertura": null,
+      "hor_fechamento": null
+    }
+  },
+  {
+    "model": "locais.localizacao",
+    "pk": 5,
+    "fields": {
+      "unique_id": "3hencteX5vKwgQTVLWivc2",
+      "created": "2020-03-02T02:05:03.470Z",
+      "modified": "2020-03-02T02:05:03.470Z",
+      "user": 1,
+      "nome": "Pra\u00e7a Matriz",
+      "pos_x": 55,
+      "pos_y": 55,
+      "hor_abertura": null,
+      "hor_fechamento": null
+    }
   }
 ]
