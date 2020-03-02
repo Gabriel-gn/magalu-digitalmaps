@@ -7,6 +7,10 @@ import django_extensions.db.fields
 
 
 class Migration(migrations.Migration):
+    """
+    Arquivo criado automaticamente pelo framework django utilizando 'python manage.py makemigrations'
+    Não modificar! Quaisquer mudanças feitas a models devem ser gerados novos migrations e aplicados via 'migrate'
+    """
 
     initial = True
 

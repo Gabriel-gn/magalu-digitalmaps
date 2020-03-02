@@ -8,7 +8,6 @@ class LocalizacaoSerializer(serializers.ModelSerializer):
     Exclui da serialização dados do banco de dados sensíveis, como quem cadastrou, id, datas de criação e modificação, etc...
     Pode ser passado o unique_id caso necessário.
     """
-
     class Meta:
         model = Localizacao
         fields = ['nome', 'pos_x', 'pos_y', 'hor_abertura', 'hor_fechamento']
