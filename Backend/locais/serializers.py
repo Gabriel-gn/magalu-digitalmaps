@@ -11,4 +11,5 @@ class LocalizacaoSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Localizacao
-        exclude = ('id', 'unique_id', 'created', 'modified', 'user')
+        fields = ['nome', 'pos_x', 'pos_y', 'hor_abertura', 'hor_fechamento']
+        # exclude = ('id', 'unique_id', 'created', 'modified', 'user')

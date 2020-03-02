@@ -1,9 +1,11 @@
-import django_filters
+from django_filters import FilterSet
 
 from locais.models import Localizacao
 
 
-class LocalizacaoFilter(django_filters.FilterSet):
+class LocalizacaoFilter(FilterSet):
+    strict = True
+
     class Meta:
         model = Localizacao
         fields = {
