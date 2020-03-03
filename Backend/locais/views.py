@@ -71,7 +71,7 @@ class LocaisRoot(generics.ListCreateAPIView):
         Override do método GET para incluir a verificação de campos de pesquisa pelo django filters.
         :return: retorna lista vazia caso não passe na verificação. Caso contrário retorna a query serializada de acordo com os parâmetros
         """
-        if not self.is_valid_query_params(request):
+        if not self.verifica_params_get(request):
             rlog.debug(request, 'verificação de GET falhou')
             return JsonResponse({'error': 'request inválido'})
         rlog.debug(request, 'verificação GET Ok')
