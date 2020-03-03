@@ -12,7 +12,6 @@ class Default(models.Model):
     unique_id = ShortUUIDField()
     created = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, default=1, on_delete=models.CASCADE)
 
     class Meta:
         abstract = True
