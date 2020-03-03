@@ -10,4 +10,5 @@ app_name = 'locais'
 
 urlpatterns = [
     path('', views.LocaisRoot.as_view(), name='locais_root'),
+    path('user', views.LocaisUser.as_view(), name='locais_root'),
 ]
