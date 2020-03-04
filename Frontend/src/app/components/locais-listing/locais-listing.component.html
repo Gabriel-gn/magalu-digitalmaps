@@ -1,14 +1,20 @@
 <div class="container">
 
-  <ul class="list-group list-group-horizontal-sm m-3">
-    <li class="list-group-item">usrPosX: {{ usrPosX }}</li>
-    <li class="list-group-item">usrPosY: {{ usrPosY }}</li>
-    <li class="list-group-item">usrMts: {{ usrMts }}</li>
-    <li class="list-group-item">usrHr: {{ usrHr }}</li>
-  </ul>
-  <button class="btn btn-primary m-3" (click)="changeLocaisPorUserInput()">
-    atualizar dados aleatoriamente
-  </button>
+  <div class="row no-gutters">
+    <div class="col-6 align-middle p-3">
+      <ul class="list-group list-group-horizontal-sm">
+        <li class="list-group-item">usrPosX: {{ usrPosX }}</li>
+        <li class="list-group-item">usrPosY: {{ usrPosY }}</li>
+        <li class="list-group-item">usrMts: {{ usrMts }}</li>
+        <li class="list-group-item">usrHr: {{ usrHr }}</li>
+      </ul>
+    </div>
+    <div class="col-6 align-middle p-3">
+      <button class="btn btn-primary" (click)="changeLocaisPorUserInput()">
+        atualizar dados aleatoriamente
+      </button>
+    </div>
+  </div>
 
   <div class="row no-gutters">
     <div
@@ -27,6 +33,4 @@
       </div>
     </div>
   </div>
-
-
 </div>
