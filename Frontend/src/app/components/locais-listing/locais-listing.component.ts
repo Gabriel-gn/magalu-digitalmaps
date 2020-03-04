@@ -15,10 +15,18 @@ export class LocaisListingComponent implements OnInit {
   public usrMts = 50;
   public usrHr = '00:00:00';
 
+  /**
+   * Retorno um inteiro aleatório entre dois valores
+   * @param min valor inteiro mínimo
+   * @param max valor inteiro máximo
+   */
   randomIntFromInterval(min: number, max: number) {
     return Math.floor(Math.random() * (max - min + 1) + min);
   }
 
+  /**
+   * Retorna um horário aleatório no formato hh:mm:ss
+   */
   randomTimeStr() {
     const hr = this.randomIntFromInterval(0, 24);
     let hr_str = hr > 9 ? '' + hr : '0' + hr;
@@ -29,6 +37,9 @@ export class LocaisListingComponent implements OnInit {
     return hr_str + ':' + min_str + ':' + seg_str;
   }
 
+  /**
+   * Altera os dados de input do usuário aleatoriamente e requisita novamente à API os dados de locais
+   */
   changeLocaisPorUserInput() {
     this.usrPosX = this.randomIntFromInterval(0, 100);
     this.usrPosY = this.randomIntFromInterval(0, 100);
