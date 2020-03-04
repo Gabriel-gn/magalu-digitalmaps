@@ -4,7 +4,9 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LocaisListingComponent } from './components/locais-listing/locais-listing.component';
+import { HttpClientModule } from '@angular/common/http';
 import { HttpService } from './services/http/http.service';
+
 
 @NgModule({
   declarations: [
@@ -13,7 +15,8 @@ import { HttpService } from './services/http/http.service';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [HttpService],
   bootstrap: [AppComponent]
