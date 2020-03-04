@@ -1,5 +1,4 @@
 <div class="container">
-
   <div class="row no-gutters">
     <div class="col-6 align-middle p-3">
       <ul class="list-group list-group-horizontal-sm">
@@ -13,6 +12,29 @@
       <button class="btn btn-primary" (click)="changeLocaisPorUserInput()">
         atualizar dados aleatoriamente
       </button>
+    </div>
+  </div>
+
+  <div class="row no-gutters">
+    <div class="col-12 align-middle p-3">
+      <form>
+        <div class="form-group">
+          <input #inputLocalizacaoNome type="text" class="form-control" placeholder="Insira o nome do local" />
+        </div>
+        <div class="form-group">
+          <input #inputLocalizacaoPosX type="number" class="form-control" placeholder="Insira a posição X do local" />
+        </div>
+        <div class="form-group">
+          <input #inputLocalizacaoPosY type="number" class="form-control" placeholder="Insira a posição Y do local" />
+        </div>
+        <div class="form-group">
+          <input #inputLocalizacaoHorAbertura type="time" class="form-control" />
+        </div>
+        <div class="form-group">
+          <input #inputLocalizacaoHorFechamento type="time" class="form-control" />
+        </div>
+      </form>
+      <button (click)="submitNewLocation()" class="btn btn-primary">Enviar</button>
     </div>
   </div>
 

@@ -87,7 +87,7 @@ class LocaisRoot(generics.ListCreateAPIView):
 
     def post(self, request, *args, **kwargs):
         """
-        Ex:
+        Ex: POST localhost:8000/locais/
         {
             "nome": "Casa Mal Assombrada",
             "pos_x": 42,

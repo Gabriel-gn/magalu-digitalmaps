@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { HttpService } from 'src/app/services/http/http.service';
 
 @Component({
@@ -14,6 +14,17 @@ export class LocaisListingComponent implements OnInit {
   public usrPosY = 0;
   public usrMts = 50;
   public usrHr = '00:00:00';
+  public newLocationNome = '';
+  public newLocationPosX = 0;
+  public newLocationPosY = 0;
+  public newLocationHorAbertura = '';
+  public newLocationHorFechamento = '';
+  @ViewChild('inputLocalizacaoNome', {static: true}) inputLocalizacaoNome: ElementRef;
+  @ViewChild('inputLocalizacaoPosX', {static: true}) inputLocalizacaoPosX: ElementRef;
+  @ViewChild('inputLocalizacaoPosY', {static: true}) inputLocalizacaoPosY: ElementRef;
+  @ViewChild('inputLocalizacaoHorAbertura', {static: true}) inputLocalizacaoHorAbertura: ElementRef;
+  @ViewChild('inputLocalizacaoHorFechamento', {static: true}) inputLocalizacaoHorFechamento: ElementRef;
+
 
   /**
    * Retorno um inteiro aleatório entre dois valores
@@ -29,12 +40,12 @@ export class LocaisListingComponent implements OnInit {
    */
   randomTimeStr() {
     const hr = this.randomIntFromInterval(0, 24);
-    let hr_str = hr > 9 ? '' + hr : '0' + hr;
+    const hrStr = hr > 9 ? '' + hr : '0' + hr;
     const min = this.randomIntFromInterval(0, 60);
-    let min_str = min > 9 ? '' + min : '0' + min;
+    const minStr = min > 9 ? '' + min : '0' + min;
     const seg = this.randomIntFromInterval(0, 60);
-    let seg_str = seg > 9 ? '' + seg : '0' + seg;
-    return hr_str + ':' + min_str + ':' + seg_str;
+    const segStr = seg > 9 ? '' + seg : '0' + seg;
+    return hrStr + ':' + minStr + ':' + segStr;
   }
 
   /**
@@ -47,6 +58,19 @@ export class LocaisListingComponent implements OnInit {
     this.usrHr = this.randomTimeStr();
     this.httpService.getLocationsByUserInput(this.usrPosX, this.usrPosY, this.usrMts, this.usrHr).subscribe(retorno => {
       this.locaisPorUserInput = retorno;
+    });
+  }
+
+  submitNewLocation() {
+    let payload = {
+      'nome': this.inputLocalizacaoNome.nativeElement.value,
+      'pos_x': this.inputLocalizacaoPosX.nativeElement.value,
+      'pos_y': this.inputLocalizacaoPosY.nativeElement.value,
+      'hor_abertura': this.inputLocalizacaoHorAbertura.nativeElement.value,
+      'hor_fechamento': this.inputLocalizacaoHorFechamento.nativeElement.value,
+    }
+    this.httpService.postNewLocation(payload).subscribe(retorno => {
+      console.log(retorno);
     });
   }
 

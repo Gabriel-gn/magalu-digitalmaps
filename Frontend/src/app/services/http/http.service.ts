@@ -28,4 +28,21 @@ export class HttpService {
   getAllLocations(hr: string) {
     return this.http.get(`http://${environment.backend}/locais/user?pos_x=0&pos_y=0&mts=2000000000&hr=${hr}`);
   }
+
+  /**
+   * Adiciona nova localização ao backend
+   * @param payload corpo em JSON a ser adicionado
+   * ex:
+   * {
+   *   "nome": "Casa Mal Assombrada 2",
+   *   "pos_x": 18,
+   *   "pos_y": 88,
+   *   "hor_abertura": "19:00:00",
+   *   "hor_fechamento": "03:00:00"
+   * }
+   */
+  postNewLocation(payload: any) {
+    return this.http.post(`http://${environment.backend}/locais/`, payload);
+  }
+
 }
