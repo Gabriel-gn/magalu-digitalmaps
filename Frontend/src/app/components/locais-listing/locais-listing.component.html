@@ -1,1 +1,32 @@
-<p>locais-listing works!</p>
+<div class="container">
+
+  <ul class="list-group list-group-horizontal-sm m-3">
+    <li class="list-group-item">usrPosX: {{ usrPosX }}</li>
+    <li class="list-group-item">usrPosY: {{ usrPosY }}</li>
+    <li class="list-group-item">usrMts: {{ usrMts }}</li>
+    <li class="list-group-item">usrHr: {{ usrHr }}</li>
+  </ul>
+  <button class="btn btn-primary m-3" (click)="changeLocaisPorUserInput()">
+    atualizar dados aleatoriamente
+  </button>
+
+  <div class="row no-gutters">
+    <div
+      *ngFor="let item of locaisPorUserInput | keyvalue"
+      class="col-12 col-md-6 col-xl-4 p-3"
+    >
+      <div class="card">
+        <div class="card-header">
+          {{ item.value.nome }}
+        </div>
+        <div class="card-body">
+          <div *ngFor="let obj of item.value | keyvalue">
+            {{ obj.key }}: {{ obj.value }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</div>
