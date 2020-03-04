@@ -1,8 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { LocaisListingComponent } from './components/locais-listing/locais-listing.component';
 
 
-const routes: Routes = [];
+const routes: Routes = [
+  { path: '', component: LocaisListingComponent },
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
