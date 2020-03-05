@@ -1,5 +1,8 @@
 <div class="container">
 
+  <mat-tab-group mat-stretch-tabs>
+    <mat-tab label="Locais por localização do usuário">
+
   <div class="row no-gutters">
     <div class="col-6 p-3">
       <button class="btn btn-primary w-100" (click)="abrirModalNovaLocalizacao()">Novo Local</button>
@@ -52,4 +55,29 @@
       </div>
     </div>
   </div>
+
+  </mat-tab>
+
+  <mat-tab label="Todos os locais">
+    <div class="row no-gutters">
+      <div
+        *ngFor="let item of locaisTodos | keyvalue"
+        class="col-12 col-md-6 col-xl-4 p-3"
+      >
+        <div class="card">
+          <div class="card-header">
+            {{ item.value.nome }}
+          </div>
+          <div class="card-body">
+            <div *ngFor="let obj of item.value | keyvalue">
+              <span style="font-size: 15px;"><b>{{ obj.key }}</b>: {{ obj.value }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </mat-tab>
+
+  </mat-tab-group>
+
 </div>

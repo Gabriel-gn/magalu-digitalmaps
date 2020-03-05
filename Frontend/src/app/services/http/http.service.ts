@@ -21,12 +21,10 @@ export class HttpService {
   }
 
   /**
-   * Retorna todas as localizações pois a distância em mts é muito alta
-   * TODO fazer a distância em mts ser igual ao maior valor presente no banco de dados
-   * @param hr Deve-se fornecer a hora em formato hh:mm:ss string.
+   * Retorna todas as localizações pelo django rest framework.
    */
-  getAllLocations(hr: string) {
-    return this.http.get(`http://${environment.backend}/locais/user?pos_x=0&pos_y=0&mts=2000000000&hr=${hr}`);
+  getAllLocations() {
+    return this.http.get(`http://${environment.backend}/locais/?nome__icontains=`);
   }
 
   /**

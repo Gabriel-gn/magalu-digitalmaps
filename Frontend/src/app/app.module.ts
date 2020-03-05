@@ -10,7 +10,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ModalInsertLocationComponent } from './components/locais-listing/modal-insert-location/modal-insert-location.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ModalChangeUserLocationComponent } from './components/locais-listing/modal-change-user-location/modal-change-user-location.component';
-import { FormsModule }   from '@angular/forms';
+import { FormsModule } from '@angular/forms';
+import { MatTabsModule } from '@angular/material/tabs';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { FormsModule }   from '@angular/forms';
     HttpClientModule,
     BrowserAnimationsModule,
     MatDialogModule,
-    FormsModule
+    FormsModule,
+    MatTabsModule
   ],
   providers: [HttpService],
   bootstrap: [AppComponent]

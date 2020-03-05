@@ -84,6 +84,10 @@ export class LocaisListingComponent implements OnInit {
       this.locaisPorUserInput = retorno;
     });
 
+    this.httpService.getAllLocations().subscribe(retorno => {
+      this.locaisTodos = retorno;
+    });
+
     // Serviço para passar variáveis/objetos através de componentes
     this.userLocationService.getUserLocations.subscribe(retorno => {
       this.locaisPorUserInput = retorno;
