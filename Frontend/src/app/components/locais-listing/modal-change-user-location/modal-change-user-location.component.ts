@@ -10,10 +10,12 @@ import { UserLocationService } from 'src/app/services/user-location/user-locatio
 export class ModalChangeUserLocationComponent implements OnInit {
 
   public locaisPorUserInput: any = {};
-  public usrPosX = 0;
-  public usrPosY = 0;
-  public usrMts = 50;
-  public usrHr = '00:00:00';
+  public userData = {
+    usrPosX: 0,
+    usrPosY: 0,
+    usrMts: 50,
+    usrHr: '00:00:01' // necessário o segundo senão o horário não vem no formato hh:mm:ss, só hh:mm
+  }
 
   /**
    * Retorno um inteiro aleatório entre dois valores
@@ -28,11 +30,11 @@ export class ModalChangeUserLocationComponent implements OnInit {
    * Retorna um horário aleatório no formato hh:mm:ss
    */
   randomTimeStr() {
-    const hr = this.randomIntFromInterval(0, 24);
+    const hr = this.randomIntFromInterval(0, 23);
     const hrStr = hr > 9 ? '' + hr : '0' + hr;
-    const min = this.randomIntFromInterval(0, 60);
+    const min = this.randomIntFromInterval(0, 59);
     const minStr = min > 9 ? '' + min : '0' + min;
-    const seg = this.randomIntFromInterval(0, 60);
+    const seg = this.randomIntFromInterval(0, 59);
     const segStr = seg > 9 ? '' + seg : '0' + seg;
     return hrStr + ':' + minStr + ':' + segStr;
   }
@@ -41,13 +43,26 @@ export class ModalChangeUserLocationComponent implements OnInit {
    * Altera os dados de input do usuário aleatoriamente e requisita novamente à API os dados de locais
    */
   changeLocaisPorUserInput() {
-    this.usrPosX = this.randomIntFromInterval(0, 100);
-    this.usrPosY = this.randomIntFromInterval(0, 100);
-    this.usrMts = this.randomIntFromInterval(10, 100);
-    this.usrHr = this.randomTimeStr();
-    this.httpService.getLocationsByUserInput(this.usrPosX, this.usrPosY, this.usrMts, this.usrHr).subscribe(retorno => {
+    this.userData.usrPosX = this.randomIntFromInterval(0, 100);
+    this.userData.usrPosY = this.randomIntFromInterval(0, 100);
+    this.userData.usrMts = this.randomIntFromInterval(10, 100);
+    this.userData.usrHr = this.randomTimeStr();
+    this.updateInformacoesServices();
+  }
+
+  /**
+   * Atualiza as informações do serviço de localizações, fazendo atualização em tempo real dos valores
+   */
+  updateInformacoesServices(): void {
+    this.httpService.getLocationsByUserInput(
+      this.userData.usrPosX,
+      this.userData.usrPosY,
+      this.userData.usrMts,
+      this.userData.usrHr
+      ).subscribe(retorno => {
       this.locaisPorUserInput = retorno;
       this.userLocationService.setUserLocations(retorno);
+      this.userLocationService.setUserData(this.userData);
     });
   }
 
@@ -57,6 +72,9 @@ export class ModalChangeUserLocationComponent implements OnInit {
                 // Serviço para passar variáveis/objetos através de componentes
                 this.userLocationService.getUserLocations.subscribe(retorno => {
                   this.locaisPorUserInput = retorno;
+                });
+                this.userLocationService.getUserData.subscribe(retorno => {
+                  this.userData = retorno;
                 });
                }
 

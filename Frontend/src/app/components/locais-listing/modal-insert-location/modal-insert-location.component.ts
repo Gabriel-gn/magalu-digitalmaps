@@ -7,13 +7,6 @@ import { HttpService } from 'src/app/services/http/http.service';
   styleUrls: ['./modal-insert-location.component.scss']
 })
 export class ModalInsertLocationComponent implements OnInit {
-
-  public newLocationNome = '';
-  public newLocationPosX = 0;
-  public newLocationPosY = 0;
-  public newLocationHorAbertura = '';
-  public newLocationHorFechamento = '';
-
   @ViewChild('inputLocalizacaoNome', {static: true}) inputLocalizacaoNome: ElementRef;
   @ViewChild('inputLocalizacaoPosX', {static: true}) inputLocalizacaoPosX: ElementRef;
   @ViewChild('inputLocalizacaoPosY', {static: true}) inputLocalizacaoPosY: ElementRef;
@@ -37,7 +30,7 @@ export class ModalInsertLocationComponent implements OnInit {
     });
   }
 
-  constructor(private httpService: HttpService) { }
+  constructor(private httpService: HttpService) {}
 
   ngOnInit(): void {
   }

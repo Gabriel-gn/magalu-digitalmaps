@@ -77,6 +77,7 @@ class LocaisRoot(generics.ListCreateAPIView):
         """
         Override do método GET para incluir a verificação de campos de pesquisa pelo django filters.
         ex: localhost:8000/locais/?nome__icontains=casa
+        para todos: localhost:8000/locais/?nome__icontains=
         :return: retorna lista vazia caso não passe na verificação. Caso contrário retorna a query serializada de acordo com os parâmetros
         """
         if not self.verifica_params_get(request):
@@ -103,15 +104,17 @@ class LocaisRoot(generics.ListCreateAPIView):
             rlog.debug(request, 'verificação POST falhou')
             return JsonResponse({'error': 'request inválido'})
         if 'hor_abertura' and 'hor_fechamento' in campos_request:
+            hor_abertura = request.data['hor_abertura'] if request.data['hor_abertura'] != '' else None
+            hor_fechamento = request.data['hor_fechamento'] if request.data['hor_fechamento'] != '' else None
             Localizacao.objects.create(
                 nome=request.data['nome'],
                 pos_x=request.data['pos_x'],
                 pos_y=request.data['pos_y'],
-                hor_abertura=request.data['hor_abertura'],
-                hor_fechamento=request.data['hor_fechamento']
+                hor_abertura=hor_abertura,
+                hor_fechamento=hor_fechamento
             )
             rlog.info(request, 'Localização \'' + request.data['nome'] + '\' criada com horário')
-            return JsonResponse({'status': 'Localização \'' + request.data['nome'] + '\' criada com horário'})
+            return JsonResponse({'msg': 'Localizacao \'' + request.data['nome'] + '\' criada com horario'})
         else:
             Localizacao.objects.create(
                 nome=request.data['nome'],
@@ -119,7 +122,8 @@ class LocaisRoot(generics.ListCreateAPIView):
                 pos_y=request.data['pos_y'],
             )
             rlog.info(request, 'Localização \'' + request.data['nome'] + '\' criada sem horário de funcionamento')
-            return JsonResponse({'status': 'Localização \'' + request.data['nome'] + '\' criada sem horário de funcionamento'})
+            return JsonResponse({'msg': 'Localizacao \'' + request.data['nome'] + '\' criada sem horario de funcionamento'})
+        return JsonResponse({'status': 'error'})
 
     def put(self, request, *args, **kwargs):
         return JsonResponse({}, status=500)

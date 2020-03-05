@@ -1,7 +1,36 @@
 <div class="container">
 
-  <button class="btn btn-primary" (click)="abrirModalNovaLocalizacao()">Novo Local</button>
-  <button class="btn btn-primary" (click)="abrirModalMudarLocalizacaoUsuario()">Alterar Localização do Usuario</button>
+  <div class="row no-gutters">
+    <div class="col-6 p-3">
+      <button class="btn btn-primary w-100" (click)="abrirModalNovaLocalizacao()">Novo Local</button>
+    </div>
+    <div class="col-6 p-3">
+      <button class="btn btn-primary w-100" (click)="abrirModalMudarLocalizacaoUsuario()">Alterar Localização do Usuario</button>
+    </div>
+  </div>
+
+  <div class="row no-gutters">
+    <div class="col-12 p-3">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th class="text-center">Posição X do Usuário</th>
+            <th class="text-center">Posição Y do Usuário</th>
+            <th class="text-center">Máxima Distância</th>
+            <th class="text-center">Horário</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="text-center">{{ userData.usrPosX }}</td>
+            <td class="text-center">{{ userData.usrPosY }}</td>
+            <td class="text-center">{{ userData.usrMts }}</td>
+            <td class="text-center">{{ userData.usrHr }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 
   <div class="row no-gutters">
     <div
@@ -13,11 +42,11 @@
           'card-header-closed': item.value.opened === false,
           'card-header-opened': item.value.opened === true
         }">
-          {{ item.value.nome }}
+          {{ item.value.nome }} <span style="font-size: 12px;">({{ item.value.opened === true ? 'aberto' : 'fechado' }})</span>
         </div>
         <div class="card-body">
           <div *ngFor="let obj of item.value | keyvalue">
-            {{ obj.key }}: {{ obj.value }}
+            <span style="font-size: 15px;"><b>{{ obj.key }}</b>: {{ obj.value }}</span>
           </div>
         </div>
       </div>

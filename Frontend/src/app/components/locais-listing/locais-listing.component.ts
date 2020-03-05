@@ -14,10 +14,13 @@ export class LocaisListingComponent implements OnInit {
 
   public locaisPorUserInput: any = {};
   public locaisTodos: any = {};
-  public usrPosX = 0;
-  public usrPosY = 0;
-  public usrMts = 50;
-  public usrHr = '00:00:00';
+  public userData = {
+    usrPosX: 0,
+    usrPosY: 0,
+    usrMts: 50,
+    usrHr: '00:00:01'  // necessário o segundo senão o horário não vem no formato hh:mm:ss, só hh:mm
+  }
+
   public insertLocationModal: ModalInsertLocationComponent;
 
   /**
@@ -46,6 +49,22 @@ export class LocaisListingComponent implements OnInit {
     this.modal.open(ModalChangeUserLocationComponent, dialogConfig);
   }
 
+  /**
+   * Atualiza as informações do serviço de localizações, fazendo atualização em tempo real dos valores
+   */
+  updateInformacoesServices(): void {
+    console.log(this.userData);
+    this.httpService.getLocationsByUserInput(
+      this.userData.usrPosX,
+      this.userData.usrPosY,
+      this.userData.usrMts,
+      this.userData.usrHr
+      ).subscribe(retorno => {
+      this.locaisPorUserInput = retorno;
+    });
+    this.userLocationService.setUserData(this.userData);
+  }
+
 
   /**
    * O construtor inicia na inicialização do componente
@@ -53,10 +72,15 @@ export class LocaisListingComponent implements OnInit {
    */
   constructor(private httpService: HttpService,
               public modal: MatDialog,
-              public userLocationService: UserLocationService,
+              public userLocationService: UserLocationService
   ) {
     // Serviço para requerimento geral GET
-    this.httpService.getLocationsByUserInput(this.usrPosX, this.usrPosY, this.usrMts, this.usrHr).subscribe(retorno => {
+    this.httpService.getLocationsByUserInput(
+      this.userData.usrPosX,
+      this.userData.usrPosY,
+      this.userData.usrMts,
+      this.userData.usrHr
+      ).subscribe(retorno => {
       this.locaisPorUserInput = retorno;
     });
 
@@ -64,6 +88,11 @@ export class LocaisListingComponent implements OnInit {
     this.userLocationService.getUserLocations.subscribe(retorno => {
       this.locaisPorUserInput = retorno;
     });
+    this.userLocationService.setUserData(this.userData);
+    this.userLocationService.getUserData.subscribe(retorno => {
+      this.userData = retorno;
+    });
+
   }
 
   ngOnInit(): void {
