@@ -1,42 +1,7 @@
 <div class="container">
-  <div class="row no-gutters">
-    <div class="col-6 align-middle p-3">
-      <ul class="list-group list-group-horizontal-sm">
-        <li class="list-group-item">usrPosX: {{ usrPosX }}</li>
-        <li class="list-group-item">usrPosY: {{ usrPosY }}</li>
-        <li class="list-group-item">usrMts: {{ usrMts }}</li>
-        <li class="list-group-item">usrHr: {{ usrHr }}</li>
-      </ul>
-    </div>
-    <div class="col-6 align-middle p-3">
-      <button class="btn btn-primary" (click)="changeLocaisPorUserInput()">
-        atualizar dados aleatoriamente
-      </button>
-    </div>
-  </div>
 
-  <div class="row no-gutters">
-    <div class="col-12 align-middle p-3">
-      <form>
-        <div class="form-group">
-          <input #inputLocalizacaoNome type="text" class="form-control" placeholder="Insira o nome do local" />
-        </div>
-        <div class="form-group">
-          <input #inputLocalizacaoPosX type="number" class="form-control" placeholder="Insira a posição X do local" />
-        </div>
-        <div class="form-group">
-          <input #inputLocalizacaoPosY type="number" class="form-control" placeholder="Insira a posição Y do local" />
-        </div>
-        <div class="form-group">
-          <input #inputLocalizacaoHorAbertura type="time" class="form-control" />
-        </div>
-        <div class="form-group">
-          <input #inputLocalizacaoHorFechamento type="time" class="form-control" />
-        </div>
-      </form>
-      <button (click)="submitNewLocation()" class="btn btn-primary">Enviar</button>
-    </div>
-  </div>
+  <button class="btn btn-primary" (click)="abrirModalNovaLocalizacao()">Novo Local</button>
+  <button class="btn btn-primary" (click)="abrirModalMudarLocalizacaoUsuario()">Alterar Localização do Usuario</button>
 
   <div class="row no-gutters">
     <div
@@ -44,7 +9,10 @@
       class="col-12 col-md-6 col-xl-4 p-3"
     >
       <div class="card">
-        <div class="card-header">
+        <div class="card-header" [ngClass]="{
+          'card-header-closed': item.value.opened === false,
+          'card-header-opened': item.value.opened === true
+        }">
           {{ item.value.nome }}
         </div>
         <div class="card-body">
