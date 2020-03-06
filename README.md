@@ -3,6 +3,16 @@
 
 Este projeto tem por finalidade criar e consumir uma API REST na qual é possível cadastrar localizações com nome, posição x, posição y e horário de funcionamento (abertura e fechamento, opcionais).
 
+
+Página Inicial             |  Adicionando novo local
+:-------------------------:|:-------------------------:
+<img src="Images/landing_page_1.png" width="450">  |  <img src="Images/landing_page_2.png" width="450">
+
+   Todos os locais         |  Alterando posição do usuário
+:-------------------------:|:-------------------------:
+<img src="Images/landing_page_3.png" width="450">  |  <img src="Images/landing_page_4.png" width="450">
+
+
 ## Configurando Backend em Django
 
 ### Requisitos:
