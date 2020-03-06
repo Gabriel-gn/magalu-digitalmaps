@@ -1,8 +1,12 @@
 from model_bakery import baker
 from django.test import TestCase
-from locais.models import Localizacao
+from locais.models import Localizacao, Default
 
-class TestsLocalizacao(TestCase):
+from django.db import models
+from django_extensions.db.fields import ShortUUIDField
+
+
+class TestsModelsLocalizacao(TestCase):
 
     def setUp(self):
         """
@@ -31,6 +35,25 @@ class TestsLocalizacao(TestCase):
             self.assertIn(campo, lista_campos_teste)
         for campo in lista_campos_teste:  # o que é esperado está no modelo?
             self.assertIn(campo, lista_campos_modelo)
+
+
+    def test_verificar_instância_campos(self):
+        """
+        Verifica se os modelos de campos são instâncias do que é esperado
+        """
+        instance_dict = {
+            'id': models.fields.AutoField,
+            'unique_id': ShortUUIDField,
+            'created': models.DateTimeField,
+            'modified': models.DateTimeField,
+            'nome': models.TextField,
+            'pos_x': models.PositiveIntegerField,
+            'pos_y': models.PositiveIntegerField,
+            'hor_abertura': models.TimeField,
+            'hor_fechamento': models.TimeField
+        }
+        for campo in self.campos_modelo:
+            self.assertIsInstance(campo, instance_dict[campo.name])
 
 
 

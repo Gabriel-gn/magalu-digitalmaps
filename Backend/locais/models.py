@@ -6,6 +6,7 @@ from django_extensions.db.fields import ShortUUIDField
 class Default(models.Model):
     """
     Model com campos padrão que serão herdados por todos os modelos subsequentes.
+    Por ter o atributo Meta abstract=True ele não é adicionado ao banco de dados como tabela.
     O campo 'id' é a primary key por padrão dos modelos criados no banco de dados.
     O campo 'unique_id' é criado apenas por fins de não referenciar o id da linha diretamente caso necessário.
     """

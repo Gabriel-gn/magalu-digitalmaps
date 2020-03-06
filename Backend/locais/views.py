@@ -114,7 +114,7 @@ class LocaisRoot(generics.ListCreateAPIView):
                 hor_fechamento=hor_fechamento
             )
             rlog.info(request, 'Localização \'' + request.data['nome'] + '\' criada com horário')
-            return JsonResponse({'msg': 'Localizacao \'' + request.data['nome'] + '\' criada com horario'})
+            return JsonResponse({'msg': 'Localizacao \'' + request.data['nome'] + '\' criada com horario', 'status': 'ok'})
         else:
             Localizacao.objects.create(
                 nome=request.data['nome'],
@@ -122,7 +122,7 @@ class LocaisRoot(generics.ListCreateAPIView):
                 pos_y=request.data['pos_y'],
             )
             rlog.info(request, 'Localização \'' + request.data['nome'] + '\' criada sem horário de funcionamento')
-            return JsonResponse({'msg': 'Localizacao \'' + request.data['nome'] + '\' criada sem horario de funcionamento'})
+            return JsonResponse({'msg': 'Localizacao \'' + request.data['nome'] + '\' criada sem horario de funcionamento', 'status': 'ok'})
         return JsonResponse({'status': 'error'})
 
     def put(self, request, *args, **kwargs):
@@ -208,7 +208,7 @@ class LocaisUser(generics.ListCreateAPIView):
                 local_json['opened'] = True
             if local_json['no_perimetro']:
                 locais_finais.append(local_json)
-
+        locais_finais.append({'status': 'ok'})
         return JsonResponse(locais_finais, safe=False)
 
     def post(self, request, *args, **kwargs):
