@@ -8,3 +8,4 @@ shortuuid==0.5.0
 uuid==1.30
 colorlog==4.1.0
 django-cors-headers==3.2.1
+model-bakery==1.1.0
