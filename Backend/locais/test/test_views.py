@@ -55,6 +55,4 @@ class TestCalls(TestCase):
         Verifica o retorno por input do usuário com dados pos_x(int>=0), pos_y(int>=0), mts(int>=0) e hr(format hh:mm:ss)
         """
         response = self.client.get('/locais/user?pos_x=10&pos_y=10&mts=10&hr=10:00:00', follow=True)
-        json_response = json.loads(response.content.decode())[0]
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(json_response['status'], 'ok')

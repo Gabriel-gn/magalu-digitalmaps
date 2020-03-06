@@ -208,7 +208,6 @@ class LocaisUser(generics.ListCreateAPIView):
                 local_json['opened'] = True
             if local_json['no_perimetro']:
                 locais_finais.append(local_json)
-        locais_finais.append({'status': 'ok'})
         return JsonResponse(locais_finais, safe=False)
 
     def post(self, request, *args, **kwargs):
