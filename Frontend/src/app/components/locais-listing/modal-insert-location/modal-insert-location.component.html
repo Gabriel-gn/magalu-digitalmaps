@@ -1,21 +1,26 @@
-<h2 mat-dialog-title>Adicionar nova localização</h2>
+<h2 mat-dialog-title>Adicionar novo local</h2>
 <mat-dialog-content class="mat-typography">
   <div class="row no-gutters">
     <div class="col-12 align-middle p-3">
       <form>
         <div class="form-group">
+          <p class="pl-3">Nome do Local</p>
           <input #inputLocalizacaoNome type="text" class="form-control" placeholder="Insira o nome do local" />
         </div>
         <div class="form-group">
+          <p class="pl-3">Posição X</p>
           <input #inputLocalizacaoPosX type="number" class="form-control" min="0" placeholder="Insira a posição X do local" />
         </div>
         <div class="form-group">
+          <p class="pl-3">Posição Y</p>
           <input #inputLocalizacaoPosY type="number" class="form-control" min="0" placeholder="Insira a posição Y do local" />
         </div>
         <div class="form-group">
+          <p class="pl-3">Horário de Abertura</p>
           <input #inputLocalizacaoHorAbertura type="time" class="form-control" />
         </div>
         <div class="form-group">
+          <p class="pl-3">Horário de Fechamento</p>
           <input #inputLocalizacaoHorFechamento type="time" class="form-control" />
         </div>
       </form>

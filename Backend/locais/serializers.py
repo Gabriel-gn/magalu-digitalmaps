@@ -10,5 +10,6 @@ class LocalizacaoSerializer(serializers.ModelSerializer):
     """
     class Meta:
         model = Localizacao
-        fields = ['nome', 'pos_x', 'pos_y', 'hor_abertura', 'hor_fechamento']
+        # fields = ['nome', 'pos_x', 'pos_y', 'hor_abertura', 'hor_fechamento']
+        fields = '__all__'
         # exclude = ('id', 'unique_id', 'created', 'modified', 'user')
